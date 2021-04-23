@@ -4,6 +4,7 @@ int main() {
     std::cout << "Hello, World!" << std::endl;
     std::cout << "Some changes from the master branch." << std::endl;
     std::cout << "Changes made to main." << std::endl;
+    std::cout << "Cherry pick command." << std::endl;
 
 
     // TODO
