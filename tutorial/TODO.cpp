@@ -3,9 +3,6 @@
 // code grobe Struktur
 
 // TODO Tutorial
-// Advanced Functions
-// Templates & Iterators
-// Smart pointers & Polymorphic templates
 // Sequence Containers
 // Associative Containers & Container Adapters
 // Regular Expression
@@ -25,6 +22,7 @@
 // CMake YT Tutorial (only reading about it is not as effective)
 
 // TODO prio 3
+// line for character limit
+// remove all unused include with one short cut
 // short cut for generate code
 // short cut for generate if, for, etc. loop
-// line for character limit

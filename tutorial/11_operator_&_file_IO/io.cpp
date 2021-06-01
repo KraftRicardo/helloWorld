@@ -16,7 +16,6 @@ using namespace std;
 // ios::out : Open file for writing
 // ios::ate : Open writing and move to the end of the file
 
-
 int main() {
 
    ofstream writeToFile;

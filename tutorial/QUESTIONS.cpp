@@ -6,5 +6,9 @@
 // Polymorphism
 
 // Operator Overloading & File I/O
+// Advanced Functions
+
+// Templates & Iterators
+// Smart pointers & Polymorphic templates
 
 

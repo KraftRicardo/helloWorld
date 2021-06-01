@@ -25,9 +25,9 @@ void findOdd(ull start, ull end, ull* oddSum){
 
 void calc(bool useThreads){
    if(useThreads){
-      cout << "(with threads)";
+      cout << "(with 15_threads)";
    } else {
-      cout << "(without threads)";
+      cout << "(without 15_threads)";
    }
    cout << "\n";
 
@@ -57,9 +57,9 @@ void calc(bool useThreads){
 
 void calc2(bool useThreads){
    if(useThreads){
-      cout << "(with threads)";
+      cout << "(with 15_threads)";
    } else {
-      cout << "(without threads)";
+      cout << "(without 15_threads)";
    }
    cout << "\n";
 
