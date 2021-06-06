@@ -1,17 +1,11 @@
-// TODO
-// prototyp Zeitplan
-// code grobe Struktur
 
-// TODO Tutorial
-// Sequence Containers
-// Associative Containers & Container Adapters
-// Regular Expression
-// Regex 2
-// Regex 3
 
 // TODO prio 1
+// Prototype schedule
+// Code structure
 // Read slides (again)
-// TODO use perf to measure time
+// use perf to measure time
+// review TODOs in the code
 
 // TODO prio 2
 // good practice: hekaton file (good 2_pointers, clean new & delete use)
@@ -26,3 +20,7 @@
 // remove all unused include with one short cut
 // short cut for generate code
 // short cut for generate if, for, etc. loop
+// helper class
+//    print vec
+//    cout << std::boolalpha;
+// logger class
