@@ -26,7 +26,7 @@ int main() {
       while(i < amtToStore){
          cout << "Enter a Number : ";
          // TODO size_t cast? Why and is it bad if I ignore this?
-         cin >> pNums[i];
+         cin >> pNums[static_cast<size_t>(i)];
          i++;
       }
    }

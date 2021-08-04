@@ -73,33 +73,37 @@ add_executable(13_temps3 "tutorial/13_preprocessor_&_templates_ &_iterators/temp
 add_executable(13_temps4 "tutorial/13_preprocessor_&_templates_ &_iterators/templates2.cpp")
 add_executable(13_temps5 "tutorial/13_preprocessor_&_templates_ &_iterators/iterators.cpp")
 
-add_executable(14_sPointer "tutorial/14_smart_pointers_&_polymorphic_templates/memory.cpp")
-add_executable(14_sPointer2 "tutorial/14_smart_pointers_&_polymorphic_templates/memory2.cpp")
-add_executable(14_sPointer3 "tutorial/14_smart_pointers_&_polymorphic_templates/polymorphicTemplates.cpp")
+add_executable(14_sPointer tutorial/14_smart_pointers_&_polymorphic_templates/memory.cpp)
+add_executable(14_sPointer2 tutorial/14_smart_pointers_&_polymorphic_templates/memory2.cpp)
+add_executable(14_sPointer3 tutorial/14_smart_pointers_&_polymorphic_templates/polymorphicTemplates.cpp)
 
 add_executable(15_threads tutorial/15_threads/threads.cpp)
 add_executable(15_threads_2 tutorial/15_threads/threads2.cpp)
 add_executable(15_threads_3 tutorial/15_threads/threads3.cpp)
 add_executable(15_threads_4 tutorial/15_threads/threads4.cpp)
 
-add_executable(16_containers "tutorial/16_sequence_containers/deque.cpp")
-add_executable(16_containers2 "tutorial/16_sequence_containers/list.cpp")
-add_executable(16_containers3 "tutorial/16_sequence_containers/forwardList.cpp")
+add_executable(16_containers tutorial/16_sequence_containers/deque.cpp)
+add_executable(16_containers2 tutorial/16_sequence_containers/list.cpp)
+add_executable(16_containers3 tutorial/16_sequence_containers/forwardList.cpp)
 
-add_executable(17_moreContainers "tutorial/17_associate_containers_enums_adapters/set.cpp")
-add_executable(17_moreContainers2 "tutorial/17_associate_containers_enums_adapters/multiset.cpp")
-add_executable(17_moreContainers3 "tutorial/17_associate_containers_enums_adapters/map.cpp")
-add_executable(17_moreContainers4 "tutorial/17_associate_containers_enums_adapters/multimap.cpp")
-add_executable(17_moreContainers5 "tutorial/17_associate_containers_enums_adapters/stack.cpp")
-add_executable(17_moreContainers6 "tutorial/17_associate_containers_enums_adapters/queue.cpp")
-add_executable(17_moreContainers7 "tutorial/17_associate_containers_enums_adapters/priorityQueue.cpp")
-add_executable(17_moreContainers8 "tutorial/17_associate_containers_enums_adapters/enum.cpp")
+add_executable(17_moreContainers tutorial/17_associate_containers_enums_adapters/set.cpp)
+add_executable(17_moreContainers2 tutorial/17_associate_containers_enums_adapters/multiset.cpp)
+add_executable(17_moreContainers3 tutorial/17_associate_containers_enums_adapters/map.cpp)
+add_executable(17_moreContainers4 tutorial/17_associate_containers_enums_adapters/multimap.cpp)
+add_executable(17_moreContainers5 tutorial/17_associate_containers_enums_adapters/stack.cpp)
+add_executable(17_moreContainers6 tutorial/17_associate_containers_enums_adapters/queue.cpp)
+add_executable(17_moreContainers7 tutorial/17_associate_containers_enums_adapters/priorityQueue.cpp)
+add_executable(17_moreContainers8 tutorial/17_associate_containers_enums_adapters/enum.cpp)
 
-add_executable(18_regex "tutorial/18_regular_expressions/basics.cpp")
-add_executable(18_regex2 "tutorial/18_regular_expressions/basics2.cpp")
-add_executable(18_regex3 "tutorial/18_regular_expressions/basics3.cpp")
-add_executable(18_regex4 "tutorial/18_regular_expressions/problem.cpp")
+add_executable(18_regex tutorial/18_regular_expressions/basics.cpp)
+add_executable(18_regex2 tutorial/18_regular_expressions/basics2.cpp)
+add_executable(18_regex3 tutorial/18_regular_expressions/basics3.cpp)
+add_executable(18_regex4 tutorial/18_regular_expressions/problem.cpp)
 
-add_executable(19_regexII "tutorial/19_regex_II/basics4.cpp")
+add_executable(19_regexII tutorial/19_regex_II/basics4.cpp)
 
-add_executable(20_regexIII "tutorial/20_regex_III/basics5.cpp")
+add_executable(20_regexIII tutorial/20_regex_III/basics5.cpp)
+
+# project
+
+add_executable(spn_main spn/src/cpp/main.cpp spn/src/cpp/csvImporter.cpp)

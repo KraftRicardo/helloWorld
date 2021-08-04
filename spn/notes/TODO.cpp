@@ -1,11 +1,22 @@
 
+// TODO prio 0
+// understand the SPN algorithm
+// find an easy table or generate one fast for yourself
+// read tables (csv)
+// create a structure to read tables (columns and rows, joins etc.)
+
+// LaTex dokument (für bessere Quellen Struktur)
+
+// create SPN
+//    create tree structure
+//       clustering via KMeans algorithm
+//       independence check for columns (RDC)
+//    test with easy queries
+//    safe model in some form
 
 // TODO prio 1
-// Prototype schedule
-// Code structure
 // Read slides (again)
 // use perf to measure time
-// review TODOs in the code
 
 // TODO prio 2
 // good practice: hekaton file (good 2_pointers, clean new & delete use)
