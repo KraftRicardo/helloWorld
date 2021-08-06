@@ -13,5 +13,5 @@ static const char* const OUTPUT_ONES = "../spn/res/ones_copy.csv";
 static const char* const OUTPUT_THREE = "../spn/res/three_cols_copy.csv";
 
 int testCsvImporter();
-void write_csv(std::string filename, std::vector<std::pair<std::string, std::vector<int>>> dataset);
-std::vector<std::pair<std::string, std::vector<int>>> read_csv(std::string filename);
+void write_csv(const std::string& filename, std::vector<std::pair<std::string, std::vector<int>>> dataset);
+std::vector<std::pair<std::string, std::vector<int>>> read_csv(const std::string& filename);

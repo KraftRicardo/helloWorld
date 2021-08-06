@@ -24,7 +24,7 @@ int testCsvImporter() {
    return 0;
 }
 
-void write_csv(string filename, vector<pair<string, vector<int>>> dataset) {
+void write_csv(const string& filename, vector<pair<string, vector<int>>> dataset) {
    std::ofstream myFile(filename);
 
    // Send column names to the stream
@@ -54,13 +54,13 @@ void write_csv(string filename, vector<pair<string, vector<int>>> dataset) {
 }
 
 // Reads a CSV file into a vector of <string, vector<int>> pairs where each pair represents <column name, column values>
-vector<pair<string, vector<int>>> read_csv(string filename) {
+vector<pair<string, vector<int>>> read_csv(const string& filename) {
    vector<pair<string, vector<int>>> result;
    std::ifstream myFile(filename);
 
    string line;
    string colName;
-   int val;
+   int val = 0;
 
    if (!myFile.is_open()) {
       throw std::runtime_error("Could not open file");
