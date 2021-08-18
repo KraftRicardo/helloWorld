@@ -106,4 +106,7 @@ add_executable(20_regexIII tutorial/20_regex_III/basics5.cpp)
 
 # project
 
-add_executable(spn_main spn/src/cpp/main.cpp spn/src/cpp/csvImporter.cpp spn/src/cpp/myObjects.cpp spn/src/generators/cpp/numberGenerator.cpp spn/src/cpp/util.cpp spn/src/generators/cpp/tableGenerator.cpp)
+add_executable(spn_main spn/src/main/cpp/main.cpp spn/src/persistence/cpp/csvImporter.cpp spn/src/util/cpp/table.cpp
+        spn/src/generators/cpp/numberGenerator.cpp spn/src/util/cpp/util.cpp spn/src/generators/cpp/tableGenerator.cpp
+        spn/src/algorithms/cpp/splitFeaturesRDC.cpp spn/src/util/cpp/table.cpp
+        spn/src/util/cpp/column.cpp)
