@@ -21,3 +21,7 @@ void Column::print() {
       cout << i << "\n";
    }
 }
+
+void Column::push_back(uint64_t i) {
+   data.push_back(i);
+}

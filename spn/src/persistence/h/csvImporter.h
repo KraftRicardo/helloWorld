@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../util/h/table.h"
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -15,3 +16,7 @@ static const char* const OUTPUT_THREE = "../spn/res/three_cols_copy.csv";
 int testCsvImporter();
 void write_csv(const std::string& filename, std::vector<std::pair<std::string, std::vector<int>>> dataset);
 std::vector<std::pair<std::string, std::vector<int>>> read_csv(const std::string& filename);
+
+Table readTable(const std::string& filename);
+void writeTable(const std::string& path, Table table);
+void writeTable(Table table);

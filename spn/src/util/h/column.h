@@ -20,6 +20,8 @@ class Column {
    explicit Column(std::string newName = NOT_SET, std::vector<uint64_t> newData = std::vector<uint64_t>());
 
    void print();
+   void push_back(uint64_t i);
+
    std::string getName();
    std::vector<uint64_t> getData();
 };

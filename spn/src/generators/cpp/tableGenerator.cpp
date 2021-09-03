@@ -23,7 +23,9 @@ void generateTable(string saveFileName){
    write_csv(saveFileName, table);
 }
 
-void generateTable(string saveFileName, uint64_t numberOfColumns, uint64_t columnSize, vector<string> names, vector<int> minRanges, vector<int> maxRanges){
+void generateTable(string saveFileName, uint64_t numberOfColumns, uint64_t columnSize, vector<string> names,
+                   vector<int> minRanges, vector<int> maxRanges){
+
    vector<pair<string, vector<int>>> table = vector<pair<string, vector<int>>>();
 
    for(uint64_t i = 0; i < numberOfColumns; i++){

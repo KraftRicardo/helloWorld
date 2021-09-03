@@ -53,6 +53,30 @@ void write_csv(const string& filename, vector<pair<string, vector<int>>> dataset
    myFile.close();
 }
 
+void writeTable(Table table){
+   writeTable(table.getPath(), table);
+}
+
+void writeTable(const string& path, Table table) {
+   std::ofstream csvFile(path);
+
+   // first line (column names)
+   for(Column column : table.getColumns()){
+      csvFile << column.getName() << ",";
+   }
+   csvFile << "\n";
+
+   // rest lines (values)
+   for(uint64_t row = 0; row < table.getColumns()[0].getData().size(); row++){
+      for(Column column : table.getColumns()){
+         csvFile << column.getData()[row] << ",";
+      }
+      csvFile << "\n";
+   }
+
+   csvFile.close();
+}
+
 // Reads a CSV file into a vector of <string, vector<int>> pairs where each pair represents <column name, column values>
 vector<pair<string, vector<int>>> read_csv(const string& filename) {
    vector<pair<string, vector<int>>> result;
@@ -93,4 +117,45 @@ vector<pair<string, vector<int>>> read_csv(const string& filename) {
 
    myFile.close();
    return result;
+}
+
+Table readTable(const string& filename) {
+   std::ifstream file(filename);
+
+   string line;
+   string columnName;
+   vector<Column> columns = {};
+   uint64_t value = 0;
+
+   if (!file.is_open()) {
+      throw std::runtime_error("Could not open file");
+   }
+
+   // column names
+   if (file.good()) {
+      getline(file, line);
+      stringstream ss(line);
+
+      while (getline(ss, columnName, ',')) {
+         columns.push_back(Column(columnName, vector<uint64_t>{}));
+      }
+   }
+
+   // column values
+   while (getline(file, line)) {
+      stringstream ss(line);
+
+      uint64_t column = 0;
+      while (ss >> value) {
+         columns.at(column).push_back(value);
+
+         if (ss.peek() == ',') {
+            ss.ignore();
+         }
+         column++;
+      }
+   }
+
+   file.close();
+   return Table(filename, columns);
 }

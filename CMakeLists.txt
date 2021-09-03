@@ -6,8 +6,21 @@ project(helloWorld VERSION 1.0)
 set(CMAKE_CXX_STANDARD 20)
 
 # add compile options
-add_compile_options(-fsanitize=address -g -Wall -Wextra -Wpedantic -Wconversion -Wnon-virtual-dtor -Werror)
+#add_compile_options(-fsanitize=address -g -Wall -Wextra -Wpedantic -Wconversion -Wnon-virtual-dtor -Werror)
+add_compile_options(-fsanitize=address -g -Wall -Wextra -Wpedantic -Wconversion -Wnon-virtual-dtor)
 add_link_options(-fsanitize=address)
+
+# project
+add_executable(spn_main spn/src/main/cpp/main.cpp spn/src/persistence/cpp/csvImporter.cpp spn/src/util/cpp/table.cpp
+        spn/src/generators/cpp/numberGenerator.cpp spn/src/util/cpp/util.cpp spn/src/generators/cpp/tableGenerator.cpp
+        spn/src/algorithms/cpp/splitFeaturesRDC.cpp spn/src/util/cpp/table.cpp
+        spn/src/util/cpp/column.cpp spn/src/generators/cpp/eigen.cpp
+        spn/src/generators/cpp/eigen.cpp spn/src/util/cpp/directedGraph.cpp)
+
+add_executable(spn_normal spn/src/test/cpp/testNormal.cpp)
+
+
+
 
 # add the executable
 add_executable(main cpp/main.cpp cpp/helper.cpp cpp/helper2.cpp hpp/vl4.h cpp/vl4.cpp)
@@ -104,9 +117,4 @@ add_executable(19_regexII tutorial/19_regex_II/basics4.cpp)
 
 add_executable(20_regexIII tutorial/20_regex_III/basics5.cpp)
 
-# project
 
-add_executable(spn_main spn/src/main/cpp/main.cpp spn/src/persistence/cpp/csvImporter.cpp spn/src/util/cpp/table.cpp
-        spn/src/generators/cpp/numberGenerator.cpp spn/src/util/cpp/util.cpp spn/src/generators/cpp/tableGenerator.cpp
-        spn/src/algorithms/cpp/splitFeaturesRDC.cpp spn/src/util/cpp/table.cpp
-        spn/src/util/cpp/column.cpp)
