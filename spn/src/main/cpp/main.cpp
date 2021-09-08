@@ -9,7 +9,7 @@ int main() {
    cout << "STARTING MAIN ... " << endl;
 
    Table t = readTable("../spn/res/t1.csv");
-   splitFeaturesRDC(t, 0.1f);
+   splitFeaturesRDC(t, 0.1);
 
 //   testGraph();
 

@@ -11,11 +11,21 @@ add_compile_options(-fsanitize=address -g -Wall -Wextra -Wpedantic -Wconversion 
 add_link_options(-fsanitize=address)
 
 # project
-add_executable(spn_main spn/src/main/cpp/main.cpp spn/src/persistence/cpp/csvImporter.cpp spn/src/util/cpp/table.cpp
-        spn/src/generators/cpp/numberGenerator.cpp spn/src/util/cpp/util.cpp spn/src/generators/cpp/tableGenerator.cpp
-        spn/src/algorithms/cpp/splitFeaturesRDC.cpp spn/src/util/cpp/table.cpp
-        spn/src/util/cpp/column.cpp spn/src/generators/cpp/eigen.cpp
-        spn/src/generators/cpp/eigen.cpp spn/src/util/cpp/directedGraph.cpp)
+add_executable(spn_main
+        spn/src/main/cpp/main.cpp
+        spn/src/algorithms/cpp/phis.cpp
+        spn/src/algorithms/cpp/clusterSamplesRDC.cpp
+        spn/src/algorithms/cpp/splitFeaturesRDC.cpp
+        spn/src/algorithms/cpp/learnMSPN.cpp
+        spn/src/generators/cpp/numberGenerator.cpp
+        spn/src/generators/cpp/tableGenerator.cpp
+        spn/src/generators/cpp/eigen.cpp
+        spn/src/persistence/cpp/csvImporter.cpp
+        spn/src/util/cpp/table.cpp
+        spn/src/util/cpp/column.cpp
+        spn/src/util/cpp/directedGraph.cpp
+        spn/src/util/cpp/util.cpp
+        )
 
 add_executable(spn_normal spn/src/test/cpp/testNormal.cpp)
 

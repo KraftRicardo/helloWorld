@@ -1,6 +1,8 @@
 #pragma once
 
+#include "../../algorithms/h/clusterSamplesRDC.h"
 #include "../../algorithms/h/splitFeaturesRDC.h"
+
 #include "../../generators/h/numberGenerator.h"
 #include "../../generators/h/tableGenerator.h"
 #include "../../persistence/h/csvImporter.h"

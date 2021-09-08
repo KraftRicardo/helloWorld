@@ -5,8 +5,8 @@
 #include "../../util/h/directedGraph.h"
 #include <iostream>
 #include <random>
-#include <math.h>
+#include <cmath>
 
 // TODO (if all algorithms work properly) for algorithm 1: union find data structure, lib: c++ boost
 
-void splitFeaturesRDC(Table d, float alpha);
+std::vector<double> getPhis(Table d);

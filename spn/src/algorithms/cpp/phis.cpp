@@ -1,4 +1,4 @@
-#include "../h/splitFeaturesRDC.h"
+#include "../h/phis.h"
 
 using namespace std;
 
@@ -11,19 +11,16 @@ static uint64_t numberOfRows;
 static vector<double> calcCVi(Column column);
 static void calcWiAndBi(double& bi, vector<double>& wi);
 static double calcPhi(Column vi);
-static void generateGraph(vector<double> phis, double alpha, uint64_t numberOfColumns);
-static double calcCCA(double d, double j);
 
 // d = table
 // alpha = threshold of significance
 
 // n = number of columns
 // m = number of rows (or sample size per column, equal for all columns)
-// cvi = empirical copula transformation (a vector per column)
 
-void splitFeaturesRDC(Table d, float alpha) {
-   cout << "Starting splitFeaturesRDC ... \n"
-        << "Table: " << d.getName() << ", Alpha: " << alpha << endl;
+vector<double> getPhis(Table d) {
+   cout << "Starting getPhis ... \n"
+        << "Table: " << d.getName() << endl;
 
    numberOfRows = d.getColumns()[0].getData().size();
 
@@ -34,37 +31,12 @@ void splitFeaturesRDC(Table d, float alpha) {
    for (double i : phis) { cout << i << ", "; }
    cout << endl;
 
-   generateGraph(phis, alpha, d.getColumns().size());
-
-   cout << "Ending splitFeaturesRDC!" << endl;
-}
-
-void generateGraph(vector<double> phis, double alpha, uint64_t numberOfColumns) {
-   DirectedGraph graph = DirectedGraph(numberOfColumns);
-
-   for(uint64_t i = 0; i < phis.size(); i++){
-      for(uint64_t j = 0; j < phis.size(); j++){
-         if(i == j){ continue; }
-
-         if(calcCCA(phis[i], phis[j]) > alpha){
-            graph.addEdge(i, j);
-         }
-      }
-   }
-
-   cout << "Connected Components: ";
-   graph.printSCCs();
-}
-
-double calcCCA(double d, double j) {
-   // TODO Understand pseudo code. Ask Philipp!
-   // What does the cov(double, double) mean?
-   // Can I throw the values just in a eigen-value-problem-solver-library?
-   return 0;
+   cout << "Ending getPhis!" << endl;
+   return phis;
 }
 
 static double calcPhi(Column vi) {
-   // (row 4) calculate cvi
+   // (row 4) calculate cvi = "empirical copula transformation" (a vector per column)
    vector<double> cvi = calcCVi(vi);
 
    // (row 5)  (wi; bi) ∼ N(0k; sIk×k)
@@ -74,6 +46,7 @@ static double calcPhi(Column vi) {
    calcWiAndBi(bi, wi);
 
    // (row 6) φ(CVi) = sin(wi · CVTi + bi)
+   // TODO This line is probably a wrong interpretation of the pseudo code. Ask Philipp!
    return sin(inner_product(begin(wi), end(wi), std::begin(cvi), 0.0) + bi);
 }
 
@@ -96,5 +69,7 @@ static void calcWiAndBi(double& bi, vector<double>& wi) {
    normal_distribution<double> distribution(MEAN, S);
 
    bi = distribution(generator);
-   for (uint64_t i = 0; i < K; i++) { wi.push_back(distribution(generator)); }
+   for (uint64_t i = 0; i < K; i++) {
+      wi.push_back(distribution(generator));
+   }
 }
