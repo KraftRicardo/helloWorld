@@ -20,9 +20,11 @@ class Table {
    public:
    explicit Table(std::string newPath = NOT_SET, std::vector<Column> newColumns = std::vector<Column>());
 
-   uint64_t numberOfRows();
+   uint64_t getNumberOfColumns();
+   uint64_t getNumberOfRows();
    void print();
 
+   // Getter
    std::string getName();
    std::string getPath();
    std::vector<Column> getColumns();

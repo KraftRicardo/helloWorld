@@ -13,8 +13,8 @@ void splitFeaturesRDC(Table d, double alpha) {
    cout << "Starting splitFeaturesRDC ... \n"
         << "Table: " << d.getName() << " Alpha: " << alpha << endl;
 
-   vector<double> phis = getPhis(d);
-   generateGraph(phis, alpha, d.getColumns().size());
+//   vector<double> phis = getPhis(d);
+//   generateGraph(phis, alpha, d.getColumns().size());
 
    cout << "End splitFeaturesRDC!";
 }

@@ -89,8 +89,8 @@ void calc2(bool useThreads){
 }
 
 int main(){
-//   calc(true);
-//   calc(false);
+//   getPhis(true);
+//   getPhis(false);
 
    calc2(true);
    calc2(false);

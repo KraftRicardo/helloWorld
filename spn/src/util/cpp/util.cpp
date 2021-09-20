@@ -7,3 +7,7 @@ void print(const std::vector<int>& column){
       cout << i << endl;
    }
 }
+
+void printWorkingDirectory() {
+   std::cout << "Current path is " << filesystem::current_path() << '\n';
+}

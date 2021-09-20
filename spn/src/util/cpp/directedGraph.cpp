@@ -1,6 +1,6 @@
 #include "../h/directedGraph.h"
 
-// SOURCE: https://www.geeksforgeeks.org/strongly-connected-components/
+
 
 using namespace std;
 

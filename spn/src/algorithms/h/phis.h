@@ -6,7 +6,8 @@
 #include <iostream>
 #include <random>
 #include <cmath>
+#include <array>
 
 // TODO (if all algorithms work properly) for algorithm 1: union find data structure, lib: c++ boost
 
-std::vector<double> getPhis(Table d);
+std::vector<std::vector<std::vector<double>>> getPhis(Table d);

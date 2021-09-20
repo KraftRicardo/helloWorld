@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// WARNING: no checks whether all columns have the same size!
+
 Table::Table(std::string newPath, std::vector<Column> newColumns) : path(std::move(newPath)), columns(std::move(newColumns)) {
    assert(!columns.empty());
    assert(!path.empty());
@@ -14,7 +16,11 @@ Table::Table(std::string newPath, std::vector<Column> newColumns) : path(std::mo
    }
 }
 
-uint64_t Table::numberOfRows(){
+uint64_t Table::getNumberOfColumns() {
+   return columns.size();
+}
+
+uint64_t Table::getNumberOfRows(){
    return columns[0].getData().size();
 }
 
@@ -28,7 +34,7 @@ void Table::print(){
    cout << endl;
 
    //values
-   for(uint64_t i = 0; i < numberOfRows(); i++){
+   for(uint64_t i = 0; i < getNumberOfRows(); i++){
       for(auto & column : columns){
          cout << column.getData()[i] << ", ";
       }
@@ -47,3 +53,4 @@ std::string Table::getPath() {
 std::vector<Column> Table::getColumns() {
    return columns;
 }
+

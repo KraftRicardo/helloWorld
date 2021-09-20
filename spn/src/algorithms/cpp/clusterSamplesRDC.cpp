@@ -15,10 +15,10 @@ void clusterSamplesRDC(Table d) {
 
 
    // TODO We do not calculate the phis the same way as in the first algorithm, since there is no for loop ( for each Vi element V do ... )
-   vector<double> phis = getPhis(d);
+//   vector<double> phis = getPhis(d);
 
    // TODO Does this mean we have 5 columns and want 2 sets?
-   kMeans(phis, KMEANS_PARAMETER);
+//   kMeans(phis, KMEANS_PARAMETER);
 
    cout << "End clusterSamplesRDC";
 }

@@ -4,13 +4,13 @@
 
 using namespace std;
 
-Column::Column(std::string newName, std::vector<uint64_t> newData) : name(std::move(newName)), data(std::move(newData)) {}
+Column::Column(string newName, vector<uint64_t> newData) : name(move(newName)), data(move(newData)) {}
 
-std::string Column::getName() {
+string Column::getName() {
    return name;
 }
 
-std::vector<uint64_t> Column::getData() {
+vector<uint64_t> Column::getData() {
    return data;
 }
 

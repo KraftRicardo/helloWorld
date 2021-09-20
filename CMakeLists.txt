@@ -17,6 +17,7 @@ add_executable(spn_main
         spn/src/algorithms/cpp/clusterSamplesRDC.cpp
         spn/src/algorithms/cpp/splitFeaturesRDC.cpp
         spn/src/algorithms/cpp/learnMSPN.cpp
+        spn/src/algorithms/cpp/kmeans.cpp
         spn/src/generators/cpp/numberGenerator.cpp
         spn/src/generators/cpp/tableGenerator.cpp
         spn/src/generators/cpp/eigen.cpp
@@ -25,11 +26,10 @@ add_executable(spn_main
         spn/src/util/cpp/column.cpp
         spn/src/util/cpp/directedGraph.cpp
         spn/src/util/cpp/util.cpp
+        spn/src/util/cpp/point.cpp
         )
 
 add_executable(spn_normal spn/src/test/cpp/testNormal.cpp)
-
-
 
 
 # add the executable

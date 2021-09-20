@@ -121,15 +121,14 @@ vector<pair<string, vector<int>>> read_csv(const string& filename) {
 
 Table readTable(const string& filename) {
    std::ifstream file(filename);
+   if (!file.is_open()) {
+      throw std::runtime_error("Could not open file");
+   }
 
    string line;
    string columnName;
    vector<Column> columns = {};
    uint64_t value = 0;
-
-   if (!file.is_open()) {
-      throw std::runtime_error("Could not open file");
-   }
 
    // column names
    if (file.good()) {
