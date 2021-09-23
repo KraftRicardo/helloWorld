@@ -23,5 +23,5 @@ class Column {
    void push_back(uint64_t i);
 
    std::string getName();
-   std::vector<uint64_t> getData();
+   std::vector<uint64_t> getData() const;
 };

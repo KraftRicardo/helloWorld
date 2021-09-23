@@ -1,0 +1,5 @@
+
+- dlib cca benutzen
+- (vllt cca visualisieren)
+- KMeans mit Matrizen
+- Getter mit const

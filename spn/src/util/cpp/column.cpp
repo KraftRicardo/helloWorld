@@ -10,7 +10,7 @@ string Column::getName() {
    return name;
 }
 
-vector<uint64_t> Column::getData() {
+vector<uint64_t> Column::getData() const {
    return data;
 }
 

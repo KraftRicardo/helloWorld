@@ -6,7 +6,6 @@ static const uint64_t K = 20;
 static const int MEAN = 0;
 static const double S = 1.0f / 6.0f;
 
-
 static vector<double> calcCVi(Column column, uint64_t numberOfRows);
 static void calcWiAndBi(double& bi, vector<double>& wi);
 static vector<vector<double>> calcPhi(Column vi, uint64_t numberOfRows);
@@ -29,7 +28,7 @@ vector<vector<vector<double>>> getPhis(Table d) {
       phis.push_back(calcPhi(vi, d.getNumberOfRows()));
    }
 
-   for(vector<vector<double>> matrix : phis){
+   for (vector<vector<double>> matrix : phis) {
       printMatrix(matrix);
    }
 
@@ -53,12 +52,12 @@ static vector<vector<double>> calcPhi(Column vi, uint64_t numberOfRows) {
 static vector<vector<double>> generateMatrix(vector<double> cvi, vector<double> wi, double bi) {
    // generate matrix with m x k
    vector<vector<double>> matrix;
-   for(uint64_t column = 0; column < wi.size(); column++){
+   for (uint64_t column = 0; column < wi.size(); column++) {
       matrix.push_back(vector<double>{});
    }
 
-   for(uint64_t row = 0; row < cvi.size(); row++){
-      for(int column = 0 ; column < wi.size(); column++){
+   for (uint64_t row = 0; row < cvi.size(); row++) {
+      for (int column = 0; column < wi.size(); column++) {
          // sin((cvi * wi) + bi)
          // matrix[row][column] = sin(cvi[row] * wi[column] + bi);
          matrix[row].push_back(sin(cvi[row] * wi[column] + bi));
@@ -74,7 +73,9 @@ static vector<double> calcCVi(Column column, uint64_t numberOfRows) {
    for (uint64_t vim : column.getData()) {
       double counter = 0;
       for (uint64_t vir : column.getData()) {
-         if (vir <= vim) { counter++; }
+         if (vir <= vim) {
+            counter++;
+         }
       }
       cvi.push_back(counter / static_cast<double>(numberOfRows));
    }
@@ -94,14 +95,16 @@ static void calcWiAndBi(double& bi, vector<double>& wi) {
 
 void printPhis(vector<double>& phis) {
    cout << "Phis: ";
-   for (double i : phis) { cout << i << ", "; }
+   for (double i : phis) {
+      cout << i << ", ";
+   }
    cout << endl;
 }
 
 void printMatrix(vector<vector<double>> matrix) {
    cout << "Printing matrix:\n";
-   for(int row = 0; row < matrix[0].size(); row++){
-      for(int column = 0; column < matrix.size(); column++) {
+   for (int row = 0; row < matrix[0].size(); row++) {
+      for (int column = 0; column < matrix.size(); column++) {
          cout << matrix[row][column] << " ";
       }
       cout << "\n";
