@@ -5,26 +5,19 @@ using namespace std;
 
 static void generateSomeTables();
 static void readAndWriteSomeTables();
+static void printMatrices(vector<vector<vector<double>>>& listOfMatrices);
 
 int main() {
    cout << "STARTING MAIN ... " << endl;
 
-//   generateSomeTables();
 
-   Table t = readTable("spn/res/t4.csv");
+//   Table t = readTable("spn/res/t4.csv");
 //   t.print();
 
-   vector<vector<vector<double>>>  listOfMatrices = calculateMatrices(t);
-   for(vector<vector<double>> matrix : listOfMatrices){
-      for(uint64_t row = 0; row < matrix[0].size(); row++){
-         for(uint64_t column = 0; column < matrix.size(); column++){
-            cout << matrix[column][row] << ", ";
-         }
-         cout << endl;
-      }
-      cout << "\n\n";
-   }
+//   vector<vector<vector<double>>> listOfMatrices = calculateMatrices(t);
+//   printMatrices(listOfMatrices);
 
+//   generateSomeTables();
 
 //   splitFeaturesRDC(t, 0.1);
 
@@ -34,6 +27,18 @@ int main() {
 
    cout << "END MAIN." << endl;
    return 0;
+}
+
+static void printMatrices(vector<vector<vector<double>>>& listOfMatrices) {
+   for(vector<vector<double>> matrix : listOfMatrices){
+      for(uint64_t row = 0; row < matrix[0].size(); row++){
+         for(uint64_t column = 0; column < matrix.size(); column++){
+            cout << matrix[column][row] << ", ";
+         }
+         cout << endl;
+      }
+      cout << "\n\n";
+   }
 }
 
 static void generateSomeTables(){
@@ -53,3 +58,5 @@ void readAndWriteSomeTables() {
    writeTable("spn/res/test", t);
    writeTable(t);
 }
+
+

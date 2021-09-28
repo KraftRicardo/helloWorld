@@ -1,5 +1,14 @@
 
+- rdc transform werte vergleichen
 - dlib cca benutzen
-- (vllt cca visualisieren)
 - KMeans mit Matrizen
 - Getter mit const
+- (vllt cca visualisieren)
+
+
+Wieso muss ich die compilierten source files benutzen und kann nicht die per sudo apt install lib-dlib bekommenen
+prebuild binaries mit header files verwenden?
+
+Wieso kann ich den dlib-19.22/dlib ordner nicht in einen libs ordner stecken?
+
+Soll ich überhaupt so einen libs ordner haben oder ist es besser das hier außerhalb des Projektes zu speichern?

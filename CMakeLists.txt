@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 
-# set the project name
 project(helloWorld VERSION 1.0)
-
 set(CMAKE_CXX_STANDARD 20)
 
 # add compile options
@@ -10,9 +8,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-fsanitize=address -g -Wall -Wextra -Wpedantic -Wconversion -Wnon-virtual-dtor)
 add_link_options(-fsanitize=address)
 
-
 # project
-add_executable(spn_main
+add_executable(
+        spn_main
         spn/src/main/cpp/main.cpp
         spn/src/algorithms/cpp/phis.cpp
         spn/src/algorithms/cpp/rdcTransform.cpp
@@ -29,12 +27,13 @@ add_executable(spn_main
         spn/src/util/cpp/directedGraph.cpp
         spn/src/util/cpp/util.cpp
         spn/src/util/cpp/point.cpp
-        spn/src/util/cpp/matrix.cpp
-        )
-target_link_libraries(spn_main dlib)
+)
 
 add_executable(spn_normal spn/src/test/cpp/testNormal.cpp)
 
+add_subdirectory(dlib-19.22/dlib dlib_build)
+add_executable(cca spn/src/algorithms/cpp/cca.cpp)
+target_link_libraries(cca dlib::dlib)
 
 # add the executable
 add_executable(main cpp/main.cpp cpp/helper.cpp cpp/helper2.cpp hpp/vl4.h cpp/vl4.cpp)
@@ -94,7 +93,10 @@ add_executable(12_adv_fun tutorial/12_advanced_functions/functionsAsObjects.cpp)
 add_executable(12_adv_fun2 tutorial/12_advanced_functions/functionsAsObjects2.cpp)
 add_executable(12_adv_fun3 tutorial/12_advanced_functions/functionsAsObjects3.cpp)
 
-add_executable(13_temps "tutorial/13_preprocessor_&_templates_ &_iterators/main.cpp" "tutorial/13_preprocessor_&_templates_ &_iterators/Animal.h" "tutorial/13_preprocessor_&_templates_ &_iterators/Animal.cpp")
+add_executable(13_temps
+        "tutorial/13_preprocessor_&_templates_ &_iterators/main.cpp"
+        "tutorial/13_preprocessor_&_templates_ &_iterators/Animal.h"
+        "tutorial/13_preprocessor_&_templates_ &_iterators/Animal.cpp")
 add_executable(13_temps2 "tutorial/13_preprocessor_&_templates_ &_iterators/preprocessor.cpp")
 add_executable(13_temps3 "tutorial/13_preprocessor_&_templates_ &_iterators/templates.cpp")
 add_executable(13_temps4 "tutorial/13_preprocessor_&_templates_ &_iterators/templates2.cpp")
