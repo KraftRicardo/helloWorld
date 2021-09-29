@@ -10,6 +10,7 @@
 #include <iostream>
 #include <filesystem>
 #include "column.h"
+#include <dlib/matrix.h>
 
 class Table {
    private:
@@ -23,6 +24,7 @@ class Table {
    uint64_t getNumberOfColumns();
    uint64_t getNumberOfRows();
    void print();
+   dlib::matrix<double> getMatrix();
 
    // Getter
    std::string getName();

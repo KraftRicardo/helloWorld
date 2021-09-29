@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-fsanitize=address -g -Wall -Wextra -Wpedantic -Wconversion -Wnon-virtual-dtor)
 add_link_options(-fsanitize=address)
 
+# subdirectories
+add_subdirectory(dlib-19.22/dlib dlib_build)
+
 # project
 add_executable(
         spn_main
@@ -27,12 +30,18 @@ add_executable(
         spn/src/util/cpp/directedGraph.cpp
         spn/src/util/cpp/util.cpp
         spn/src/util/cpp/point.cpp
+        spn/src/util/cpp/dlibTable.cpp
 )
+target_link_libraries(spn_main dlib::dlib)
 
 add_executable(spn_normal spn/src/test/cpp/testNormal.cpp)
 
-add_subdirectory(dlib-19.22/dlib dlib_build)
-add_executable(cca spn/src/algorithms/cpp/cca.cpp)
+# using path to dlib source code folder
+add_executable(
+        cca
+        spn/src/test/cpp/cca.cpp
+        spn/src/util/cpp/dlibTable.cpp
+)
 target_link_libraries(cca dlib::dlib)
 
 # add the executable

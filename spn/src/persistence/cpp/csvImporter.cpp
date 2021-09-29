@@ -1,4 +1,5 @@
 #include "../h/csvImporter.h"
+#include "../../util/h/dlibTable.h"
 
 using namespace std;
 
@@ -158,3 +159,6 @@ Table readTable(const string& filename) {
    file.close();
    return Table(filename, columns);
 }
+
+
+

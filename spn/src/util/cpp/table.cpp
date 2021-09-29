@@ -42,6 +42,10 @@ void Table::print(){
    }
 }
 
+dlib::matrix<double> Table::getMatrix() {
+
+}
+
 std::string Table::getName() {
    return name;
 }

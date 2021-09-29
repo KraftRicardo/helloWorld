@@ -12,3 +12,7 @@ prebuild binaries mit header files verwenden?
 Wieso kann ich den dlib-19.22/dlib ordner nicht in einen libs ordner stecken?
 
 Soll ich überhaupt so einen libs ordner haben oder ist es besser das hier außerhalb des Projektes zu speichern?
+
+Ich hab gerade zwei matrix.h zum Angebot? Wahrscheinlich wegen usr/include und der build lib
+
+Wenn wir die lib beibehalten, wie filtere ich diesen riesigen Haufen Warnings von der dlib library?

@@ -1,5 +1,5 @@
 #include "../h/main.h"
-
+#include "../../util/h/dlibTable.h"
 
 using namespace std;
 
@@ -9,6 +9,9 @@ static void printMatrices(vector<vector<vector<double>>>& listOfMatrices);
 
 int main() {
    cout << "STARTING MAIN ... " << endl;
+
+   DlibTable dTable = DlibTable("spn/res/t4.csv");
+   dTable.print();
 
 
 //   Table t = readTable("spn/res/t4.csv");
