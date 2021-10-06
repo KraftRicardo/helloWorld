@@ -2,111 +2,95 @@
 
 using namespace std;
 
+static const string PATH_PREFIX = "spn/res/tables/results/";
+
 static const uint64_t K = 20;
-static const int MEAN = 0;
 static const double S = 1.0f / 6.0f;
+static const int MEAN = 0;
 
-static vector<double> calcCVi(Column column, uint64_t numberOfRows);
-static void calcWiAndBi(double& bi, vector<double>& wi);
-static vector<vector<double>> calcPhi(Column vi, uint64_t numberOfRows);
-static vector<vector<double>> generateMatrix(vector<double> cvi, vector<double> wi, double bi);
-static void printPhis(vector<double>& phis);
-static void printMatrix(vector<vector<double>> matrix);
+static int counter = 0;
 
-// d = table
-// alpha = threshold of significance
+static dlib::matrix<double> calculateMatrix(const dlib::matrix<double> &column, const string &tableName);
+static dlib::matrix<double> calcEmpiricalCompula(dlib::matrix<double> column);
+static dlib::matrix<double> getRandomMatrix(long numberOfRows, long numberOfColumns, int mean, double standardDeviation);
 
-// n = number of columns
-// m = number of rows (or sample size per column, equal for all columns)
+vector<dlib::matrix<double>> rdc2(DlibTable table) {
+   string folderName = table.getName();
+   filesystem::create_directory(PATH_PREFIX + folderName);
 
-vector<vector<vector<double>>> getPhis(Table d) {
-   cout << "Starting getPhis ... \nTable: " << d.getName() << endl;
-
-   // list of all matrices (1 per column)
-   vector<vector<vector<double>>> phis = {};
-   for (Column vi : d.getColumns()) {
-      phis.push_back(calcPhi(vi, d.getNumberOfRows()));
+   vector<dlib::matrix<double>> matrices = {};
+   for(uint64_t j = 0; j < table.getNumberOfColumns(); j++){
+      matrices.push_back(calculateMatrix(table.getColumn(j), folderName));
    }
-
-   for (vector<vector<double>> matrix : phis) {
-      printMatrix(matrix);
-   }
-
-   return phis;
+   return matrices;
 }
 
-static vector<vector<double>> calcPhi(Column vi, uint64_t numberOfRows) {
-   // (row 4) calculate cvi = "empirical copula transformation" (a vector per column)
-   vector<double> cvi = calcCVi(vi, numberOfRows);
+static dlib::matrix<double> calculateMatrix(const dlib::matrix<double> &column, const string &folderName) {
+   cout << "column :\n" << column << endl;
 
-   // (row 5)  (wi; bi) ∼ N(0k; sIk×k)
-   double bi = 0;
-   vector<double> wi = {};
-   calcWiAndBi(bi, wi); // TODO feed random seed before?
+   //get the empirical compula column
+   dlib::matrix<double> empi = calcEmpiricalCompula(column);
+   saveMatrixAsCsv(empi, PATH_PREFIX + folderName + "/empi_" + to_string(counter));
 
-   // (row 6) φ(CVi) = sin(wi · CVTi + bi) TODO This line is probably a wrong interpretation of the pseudo code.
-   return generateMatrix(cvi, wi, bi);
-}
+   //random gaussian
+   dlib::matrix<double> gaussian = getRandomMatrix(2, K, MEAN, S);
+   saveMatrixAsCsv(gaussian, PATH_PREFIX + folderName + "/gaussian_" + to_string(counter));
 
-// TODO not working properly yet!
-static vector<vector<double>> generateMatrix(vector<double> cvi, vector<double> wi, double bi) {
-   // generate matrix with m x k
-   vector<vector<double>> matrix;
-   for (uint64_t column = 0; column < wi.size(); column++) {
-      matrix.push_back(vector<double>{});
-   }
+   // multiplication
+   dlib::matrix<double> res = empi * gaussian;
+   res = S / 2 * res;
+   saveMatrixAsCsv(res, PATH_PREFIX + folderName + "/res_" + to_string(counter));
 
-   for (uint64_t row = 0; row < cvi.size(); row++) {
-      for (int column = 0; column < wi.size(); column++) {
-         // sin((cvi * wi) + bi)
-         // matrix[row][column] = sin(cvi[row] * wi[column] + bi);
-         matrix[row].push_back(sin(cvi[row] * wi[column] + bi));
+   // sin(res)
+   for(long i = 0; i < res.nr(); i++){
+      for(long j = 0; j < res.nc(); j++){
+         res(i,j) = sin(res(i,j));
       }
    }
+   saveMatrixAsCsv(res, PATH_PREFIX + folderName + "/sin(res)_" + to_string(counter));
 
-   return matrix;
+   counter++;
+   return res;
 }
 
-static vector<double> calcCVi(Column column, uint64_t numberOfRows) {
-   vector<double> cvi = {};
+static dlib::matrix<double> calcEmpiricalCompula(dlib::matrix<double> column) {
+   cout << "column\n" << column;
 
-   for (uint64_t vim : column.getData()) {
+   long numberOfRows = column.nr();
+   dlib::matrix<double> empi = dlib::ones_matrix<double>(numberOfRows, 2);
+
+   for(long i = 0; i < numberOfRows; i++){
       double counter = 0;
-      for (uint64_t vir : column.getData()) {
-         if (vir <= vim) {
+      for(long j = 0; j < numberOfRows; j++){
+         if(column(i, 0) >= column(j, 0)){
             counter++;
          }
       }
-      cvi.push_back(counter / static_cast<double>(numberOfRows));
+      empi(i, 0) = counter / static_cast<double>(numberOfRows);
    }
 
-   return cvi;
+   return empi;
 }
 
-static void calcWiAndBi(double& bi, vector<double>& wi) {
-   default_random_engine generator;
-   normal_distribution<double> distribution(MEAN, S);
+static dlib::matrix<double> getRandomMatrix(long numberOfRows, long numberOfColumns, int mean, double standardDeviation) {
+   assert(numberOfRows > 0 && numberOfColumns > 0);
 
-   bi = distribution(generator);
-   for (uint64_t i = 0; i < K; i++) {
-      wi.push_back(distribution(generator));
-   }
-}
+   default_random_engine generator(0);
+   normal_distribution<double> distribution(mean, standardDeviation);
 
-void printPhis(vector<double>& phis) {
-   cout << "Phis: ";
-   for (double i : phis) {
-      cout << i << ", ";
-   }
-   cout << endl;
-}
-
-void printMatrix(vector<vector<double>> matrix) {
-   cout << "Printing matrix:\n";
-   for (int row = 0; row < matrix[0].size(); row++) {
-      for (int column = 0; column < matrix.size(); column++) {
-         cout << matrix[row][column] << " ";
+   dlib::matrix<double> m;
+   m.set_size(numberOfRows, numberOfColumns);
+   for(long i = 0; i < numberOfRows; i++){
+      for(long j = 0; j < numberOfColumns; j++){
+         m(i, j) = distribution(generator);
       }
-      cout << "\n";
    }
+
+   return m;
+
+   //   TODO wie kann ich diese Zeile richtig benutzen?
+   //   algorithms::matrix m = algorithms::randm(numberOfRows, numberOfColumns, distribution);
+
+   //   TODO: Warum geht diese Zeile nicht?
+   //   algorithms::matrix m = algorithms::randm(numberOfRows, numberOfColumns, normal_distribution<double> (mean, standardDeviation));
 }

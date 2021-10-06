@@ -1,2 +1,0 @@
-
-extern bool myBool;

@@ -2,11 +2,13 @@
 
 #include <vector>
 #include <cassert>
-#include <iostream>
 #include <random>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <map>
+#include <random>
+#include <cmath>
 
-std::vector<int> generateRandomVector(int lowerBorder, int upperBorder, u_int64_t length);
-int generateRandomNumber(int lowerBorder, int upperBorder);
-void setSeed(uint seed);
-void setRandomSeed();
-int generateRandomNumber2(int lowerBorder, int upperBorder);
+double randDouble_uniform(double lowerBound, double upperBound);
+void exampleCode();

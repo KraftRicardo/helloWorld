@@ -1,13 +1,10 @@
 #pragma once
 
-#include "../../util/h/table.h"
-#include "../../util/h/column.h"
-#include "../../util/h/directedGraph.h"
-#include <iostream>
+#include "../h/util.h"
+#include "dlibTable.h"
+#include <filesystem>
 #include <random>
-#include <cmath>
-#include <array>
+#include <vector>
+#include <dlib/matrix.h>
 
-// TODO (if all algorithms work properly) for algorithm 1: union find data structure, lib: c++ boost
-
-std::vector<std::vector<std::vector<double>>> getPhis(Table d);
+std::vector<dlib::matrix<double>> rdc2(DlibTable table);

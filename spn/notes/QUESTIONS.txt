@@ -6,6 +6,12 @@
 - (vllt cca visualisieren)
 
 
+TODO Wichtig
+
+Die empi methode im Python Code macht max suche und nicht min (wie im pseudo-code beschrieben)
+
+TODO Zweitrangig
+
 Wieso muss ich die compilierten source files benutzen und kann nicht die per sudo apt install lib-dlib bekommenen
 prebuild binaries mit header files verwenden?
 
@@ -16,3 +22,17 @@ Soll ich überhaupt so einen libs ordner haben oder ist es besser das hier auße
 Ich hab gerade zwei matrix.h zum Angebot? Wahrscheinlich wegen usr/include und der build lib
 
 Wenn wir die lib beibehalten, wie filtere ich diesen riesigen Haufen Warnings von der dlib library?
+
+Warum muss ich in der cmakelist nur die cpp angeben? Kann aber auch die .h angeben. Was ist good practice?
+
+shift+F6 für dlibTable.cpp kaputt. Liegt vermutlich an der importierten library
+
+//   TODO wie kann ich diese Zeile richtig benutzen?
+//   dlib::matrix m = dlib::randm(numberOfRows, numberOfColumns, distribution);
+
+//   TODO: Warum geht diese Zeile alternativ nicht?
+//   dlib::matrix m = dlib::randm(numberOfRows, numberOfColumns, normal_distribution<double> (mean, standardDeviation));
+
+Da ist ein nicht von der CMakeList.txt definiertes dlib executable (Wahrscheinlich von der lib)
+
+Wenn ich das return statement in einer Methode vergesse, ist die Warning gelb und nicht rot?????
