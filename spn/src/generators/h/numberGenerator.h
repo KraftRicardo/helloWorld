@@ -10,5 +10,6 @@
 #include <random>
 #include <cmath>
 
-double randDouble_uniform(double lowerBound, double upperBound);
+double randomDouble_uniform(double lowerBound, double upperBound);
+int randomInt_uniform(int lowerBound, int upperBound);
 void exampleCode();

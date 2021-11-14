@@ -1,6 +1,6 @@
 #pragma once
 
-#include "directedGraph.h"
+#include "../../util/h/directedGraph.h"
 #include <vector>
 #include <dlib/matrix.h>
 #include <dlib/statistics/cca.h>

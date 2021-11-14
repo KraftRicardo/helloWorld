@@ -1,37 +1,48 @@
 
-// TODO prio 0
-// understand the SPN algorithm
-// find an easy table or generate one fast for yourself
-// read tables (csv)
-// create a structure to read tables (columns and rows, joins etc.)
+- Recherche
+   Vortrag parallel abgeben?
+   Muss ich es drucken, wenn ja wo?
+   Fabi und Felix nach ihren Arbeiten fragen
+- BA Text
+   Formatierung Regeln
+   Liste über was ich schreiben kann
+   3 Seiten schreiben (Papa schicken)
+- Code
+   CCA Recherche (Buch Kapitel)
+      Text schreiben, der erklärt was es macht
+   KMeans implementieren und Werte vergleich
 
-// LaTex dokument (für bessere Quellen Struktur)
 
-// create SPN
-//    create tree structure
-//       clustering via KMeans algorithm
-//       independence check for columns (RDC)
-//    test with easy queries
-//    safe model in some form
 
-// TODO prio 1
-// Read slides (again)
-// use perf to measure time
 
-// TODO prio 2
-// good practice: hekaton file (good 2_pointers, clean new & delete use)
-// good practice: copy & move constructor
-//    read this: https://www.internalpointers.com/post/c-rvalue-references-and-move-semantics-beginners
-// good practice: calc primes
-// add my own util.cpp as extension to every test method
-// CMake YT Tutorial (only reading about it is not as effective)
 
-// TODO prio 3
-// line for character limit
-// remove all unused include with one short cut
-// short cut for generate code
-// short cut for generate if, for, etc. loop
-// helper class
-//    print vec
-//    cout << std::boolalpha;
-// logger class
+4 Wochen bis zu Bachelorarbeit Abgabe
+   Code:
+   KMeans
+   CCA
+   Alg 3
+   DEEP DB tree
+      SQL Anfrage simulieren
+      Performancetest (C++ vs. Python)
+   Test Code, Performance Optimierung
+      Tabellen lesen, mit echt Werten
+      Grafiken erstellen
+
+   Text
+      ca. 30 Seiten
+      Über den Werdegang der Arbeit
+         Quellen und Inspiration
+         Umsetzung
+         Probleme dabei
+         Schwacher Pseudo Code
+         Nicht übereinstimmend mit echten Code
+         Konkrete Schritt für Schritt Beispiele fehlen
+         Python Projekt läuft nicht
+         Meine Lösung dafür
+         Performance Analyse
+         Vergleich
+         Fazit
+
+   Sorge:
+   Ich implementiere den Code für eine Tabelle. Nicht für mehrere. Relational ist da nichts. Ich erreiche nicht das Ende code technisch.
+   Soll ich für den Performancevergleich den Python Code rausbrechen und ausführen?

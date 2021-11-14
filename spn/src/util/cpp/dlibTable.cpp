@@ -19,19 +19,15 @@ dlib::matrix<double> DlibTable::getColumn(uint64_t index) {
    dlib::matrix<double> column;
    column.set_size(getNumberOfRows(), 1);
 
-   for(int i = 0; i < data.nr(); i++){
+   for (int i = 0; i < data.nr(); i++) {
       column(i, 0) = data(i, index);
    }
    return column;
 }
 
-uint64_t DlibTable::getNumberOfColumns() {
-   return data.nc();
-}
+uint64_t DlibTable::getNumberOfColumns() { return data.nc(); }
 
-uint64_t DlibTable::getNumberOfRows() {
-   return data.nr();
-}
+uint64_t DlibTable::getNumberOfRows() { return data.nr(); }
 
 void DlibTable::print() {
    cout << "Table: " << path << endl;
@@ -40,7 +36,7 @@ void DlibTable::print() {
    // column names
    for (uint64_t i = 0; i < columnNames.size(); i++) {
       cout << columnNames[i];
-      if(i != columnNames.size() - 1){
+      if (i != columnNames.size() - 1) {
          cout << " ";
       }
    }
@@ -50,25 +46,12 @@ void DlibTable::print() {
    cout << data;
 }
 
-// Getter
-string DlibTable::getPath() {
-   return path;
-}
-
-vector<string> DlibTable::getColumnNames() {
-   return columnNames;
-}
-
-dlib::matrix<double> DlibTable::getData() {
-   return data;
-}
-
 void DlibTable::readDlibTable() {
    std::ifstream file(path);
    if (!file.is_open()) {
       throw runtime_error("Could not open file: " + path);
    } else {
-      cout << "Reading table: " << path << "... \n";
+//      cout << "Reading table: " << path << "... \n";
    }
 
    // column names
@@ -134,7 +117,7 @@ void DlibTable::saveTableAsCsv(const string& filename) {
 
    // column names
    for (uint64_t i = 0; i < columnNames.size(); i++) {
-      if(i == columnNames.size() - 1){
+      if (i == columnNames.size() - 1) {
          file << columnNames[i] + "\n";
       } else {
          file << columnNames[i] + ","; // No comma at end of line
@@ -142,11 +125,11 @@ void DlibTable::saveTableAsCsv(const string& filename) {
    }
 
    // matrix
-   for(long row = 0; row < data.nr(); row++){
-      for(long column = 0; column < data.nc(); column++){
+   for (long row = 0; row < data.nr(); row++) {
+      for (long column = 0; column < data.nc(); column++) {
          file << data(row, column);
-         if(column == data.nc() - 1){
-            if(row != data.nr() - 1){
+         if (column == data.nc() - 1) {
+            if (row != data.nr() - 1) {
                file << "\n";
             }
          } else {
@@ -159,9 +142,13 @@ void DlibTable::saveTableAsCsv(const string& filename) {
    cout << "Done." << endl;
 }
 
+// Getter
+string DlibTable::getPath() { return path; }
+vector<string> DlibTable::getColumnNames() { return columnNames; }
+dlib::matrix<double> DlibTable::getData() { return data; }
+
 std::string DlibTable::getName() {
    string baseFilename = path.substr(path.find_last_of("/\\") + 1);
    string::size_type const p(baseFilename.find_last_of('.'));
    return baseFilename.substr(0, p);
 }
-

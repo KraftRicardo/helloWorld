@@ -1,28 +1,65 @@
-#include "../h/mainAlg.h"
+#include "../h/mainAlgorithm.h"
+#include <sys/time.h>
 
 using namespace std;
 
-
 void exampleMatrix();
 
+long timeStamp(){
+   struct timeval tp;
+   gettimeofday(&tp, NULL);
+   long int ms = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+   return ms;
+}
+
+void measureTime(string tablePath){
+   DlibTable dTable = DlibTable(tablePath);
+   long startTime = timeStamp();
+//   vector<dlib::matrix<double>> matrices = rdc2(dTable);
+   for(int i = 0; i<100; i++){
+      vector<dlib::matrix<double>> matrices = rdc2(dTable);
+   }
+   long endTime = timeStamp();
+   cout << "################# Time = " << endTime - startTime << endl;
+}
+
+void performanceTest(){
+   for(int i = 0; i<=1000000; i++){
+      if(i == 1000000){
+         cout << "Clocking up processor: " << i << endl;
+      }
+   }
+
+   int nRows = 0;
+   for(int i = 0; i < 10; i++){
+      nRows += 10000;
+      cout << "10x" << nRows << ": ";
+      measureTime("spn/res/tables/generated/P-Test/10x" + to_string(nRows) + ".csv");
+   }
+
+   int nColumns = 0;
+   for(int i = 0; i < 18; i++){
+      nColumns += 5;
+      cout << nColumns << "x10000: ";
+      measureTime("spn/res/tables/generated/P-Test/" + to_string(nColumns) + "x10000.csv");
+   }
+}
+
 int main() {
-   cout << "Starting cca ... ";
+   // performance
+   performanceTest();
 
-//   rdc2(DlibTable("spn/res/t3.csv"));
-
-   // algorithm 1
-   DlibTable dTable = DlibTable("spn/res/tables/generated/t4.csv");
-   vector<dlib::matrix<double>> matrices = rdc2(dTable);
-   double alpha = 0.2;
+   // connected components
 //   printConnectedComponents(matrices, alpha);
+
+   // cca
 //   testCCA();
-
-
 
    // tests
 //   testDlib();
 //   exampleMatrix();
 }
+
 
 void exampleMatrix() {
    // Let's begin this example by using the library to solve a simple

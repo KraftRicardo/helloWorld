@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../h/util.h"
-#include "dlibTable.h"
+#include "../../util/h/dlibTable.h"
+#include "../../util/h/util.h"
 #include <filesystem>
 #include <random>
 #include <vector>

@@ -1,29 +1,17 @@
 
-- rdc transform werte vergleichen
-- dlib cca benutzen
-- KMeans mit Matrizen
-- Getter mit const
-- (vllt cca visualisieren)
-
+TODO
+    - cca
+    - kmeans
+    - improve number generator
 
 TODO Wichtig
 
-Die empi methode im Python Code macht max suche und nicht min (wie im pseudo-code beschrieben)
+cca returned einen Vektor, keine einzelne Zahl
+
+KMeans in in Python
 
 TODO Zweitrangig
 
-Wieso muss ich die compilierten source files benutzen und kann nicht die per sudo apt install lib-dlib bekommenen
-prebuild binaries mit header files verwenden?
-
-Wieso kann ich den dlib-19.22/dlib ordner nicht in einen libs ordner stecken?
-
-Soll ich überhaupt so einen libs ordner haben oder ist es besser das hier außerhalb des Projektes zu speichern?
-
-Ich hab gerade zwei matrix.h zum Angebot? Wahrscheinlich wegen usr/include und der build lib
-
-Wenn wir die lib beibehalten, wie filtere ich diesen riesigen Haufen Warnings von der dlib library?
-
-Warum muss ich in der cmakelist nur die cpp angeben? Kann aber auch die .h angeben. Was ist good practice?
 
 shift+F6 für dlibTable.cpp kaputt. Liegt vermutlich an der importierten library
 
@@ -32,7 +20,3 @@ shift+F6 für dlibTable.cpp kaputt. Liegt vermutlich an der importierten library
 
 //   TODO: Warum geht diese Zeile alternativ nicht?
 //   dlib::matrix m = dlib::randm(numberOfRows, numberOfColumns, normal_distribution<double> (mean, standardDeviation));
-
-Da ist ein nicht von der CMakeList.txt definiertes dlib executable (Wahrscheinlich von der lib)
-
-Wenn ich das return statement in einer Methode vergesse, ist die Warning gelb und nicht rot?????

@@ -1,5 +1,11 @@
 #include "../h/phis.h"
 
+//#include <sys/time.h>
+//struct timeval tp;
+//gettimeofday(&tp, NULL);
+//long int ms = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+
+
 using namespace std;
 
 static const uint64_t K = 20;
@@ -110,3 +116,5 @@ void printMatrix(vector<vector<double>> matrix) {
       cout << "\n";
    }
 }
+
+
